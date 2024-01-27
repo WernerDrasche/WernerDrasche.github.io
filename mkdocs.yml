@@ -1,0 +1,5 @@
+site_name: My Website
+site_url: https://wernerdrasche.xyz/
+theme:
+  name: readthedocs
+  highlightjs: true
