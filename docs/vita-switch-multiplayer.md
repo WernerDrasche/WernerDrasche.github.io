@@ -48,7 +48,7 @@ Change the following settings:
 - `network >> port offset`: 0
 
 If the fonts look bad ingame you can get original fonts [here](vita-switch-multiplayer/font.7z). Extract them into
-`switch >> ppsspp >> assets >> flash0 >> font`. If there is no improvement try to change the game resolution (x times PSP)
+`/switch/ppsspp/assets/flash0/font`. If there is no improvement try to change the game resolution (x times PSP)
 and restart the game (maybe some stuff is cached).
 
 #### Done
