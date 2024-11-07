@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://wernerdrasche.xyz/vita-switch-multiplayer/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>PSP multiplayer with Switch and Vita - My Website</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PSP multiplayer with Switch and Vita";
+        var mkdocs_page_input_path = "vita-switch-multiplayer.md";
+        var mkdocs_page_url = "/vita-switch-multiplayer/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Website
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">PSP multiplayer with Switch and Vita</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-you-get">What you get</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#preparing-the-server">Preparing the server</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#linux-computer">Linux computer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#windows-computer">Windows computer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#preparing-the-vita">Preparing the Vita</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get-ppsspp-for-the-switch">Get PPSSPP for the Switch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#done">Done</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Website</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">PSP multiplayer with Switch and Vita</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="psp-multiplayer-with-switch-and-vita">PSP multiplayer with Switch and Vita</h1>
+<h4 id="requirements">Requirements</h4>
+<ul>
+<li>jailbroken switch (I have atmosphere)</li>
+<li>jailbroken vita (I have henkaku enso 1.65)</li>
+<li>spare computer to run the adhoc server on (I have raspberry pi 4)</li>
+</ul>
+<h4 id="what-you-get">What you get</h4>
+<p>You can play e.g. Monster Hunter Portable 3rd (only game I tested with this setup) online
+with a PS-Vita, a Nintendo Switch and a Computer. The non-pc devices must be in the same
+local network as the server.</p>
+<h4 id="preparing-the-server">Preparing the server</h4>
+<h5 id="linux-computer">Linux computer</h5>
+<p>Download the source code from <a href="https://forums.ppsspp.org/showthread.php?tid=25024">this thread</a> or from 
+<a href="adhoc-server.7z">here</a> and then run make (on ubuntu server for the raspberry I didn't have to install any
+additional libraries but I think psql might be a requirement). Don't forget to make the server executable (<code>chmod +x server_name</code>).
+To start the server at boot install the following crontab (<code>crontab -e</code>):</p>
+<pre><code>@reboot cd /absolute/path/to/server/directory &amp;&amp; ./server_name
+</code></pre>
+<p>After testing if it runs fine reboot the raspberry pi.</p>
+<h5 id="windows-computer">Windows computer</h5>
+<p>Unless you know how to compile stuff in windows (I certainly don't) you can just resort to opening up a game in PPSSPP
+on that computer everytime you want to play multiplayer. Make sure that the <code>network &gt;&gt; enable pro adhoc server</code> setting is checked.</p>
+<h4 id="preparing-the-vita">Preparing the Vita</h4>
+<p>Follow <a href="https://vita.hacks.guide/adrenaline.html">this guide</a> to install adrenaline. Adding an ISO is easy and involves just dragging it into the
+<code>ux0:pspemu/ISO</code> folder (in windows you have to check the "show operating system folders" setting).
+To exit adrenaline just long-press the home button, select settings and then close the emulation.
+Now we might want to figure out the Vita's IP address. The easiest way that I could find was to just enable the FTP server on Vita-Shell
+(press start and then change from USB to FTP mode). Now you can locate the device on your router and make the IP fixed which makes connecting
+with FTP easier in the future (just create a new site in WinScp for example). The next step is the installation of the plugin that will allow
+adrenaline to connect to the adhoc server. It is called "Pro online" and there is apparently a version created specifically for adrenaline.
+You can get it on <a href="https://www.reddit.com/r/vitahacks/comments/ixn9bk/psa_we_have_a_working_pro_online_client_for/">reddit</a> or
+<a href="pro-online.7z">here</a> in case the link is dead. Extract the contents into <code>ux0:pspemu</code> and prepare the following files:</p>
+<ul>
+<li><code>game.txt</code>: <code>ms0:/seplugins/atpro.prx 1</code> </li>
+<li><code>hotspot.txt</code>: {name of wifi network (without the curly braces of course)}</li>
+<li><code>server.txt</code>: {local ip address of spare computer (you should also make sure that it's fixed as well)}</li>
+</ul>
+<p>Now go back to adrenaline and open the network settings. There you select infrastructure mode then scan and connect to your network.
+To finish the plugin installation press select and enable <code>recovery menu &gt;&gt; advanced &gt;&gt; force high memory layout</code>. Go back and on your
+way you should check that <code>recovery menu &gt;&gt; plugins &gt;&gt; atpro.prx</code> is indeed enabled.</p>
+<h4 id="get-ppsspp-for-the-switch">Get PPSSPP for the Switch</h4>
+<p>Use <a href="https://gbatemp.net/threads/ppsspp-switch-beta-release.535468/page-57#post-10189409">this thread</a> to get a recent release.
+Change the following settings:</p>
+<ul>
+<li><code>network &gt;&gt; pro adhoc address</code>: {server local IP-address}</li>
+<li><code>network &gt;&gt; wifi channel</code>: 1</li>
+<li><code>network &gt;&gt; port offset</code>: 0</li>
+</ul>
+<p>If the fonts look bad ingame you can get original fonts <a href="font.7z">here</a>. Extract them into
+<code>/switch/ppsspp/assets/flash0/font</code>. If there is no improvement try to change the game resolution (x times PSP)
+and restart the game (maybe some stuff is cached).</p>
+<h4 id="done">Done</h4>
+<p>Everything should work now. You could probably add the server to a zerotier network
+so that you could play with computers outside of the local network (I did not test this). 
+It took me a lot of hours to get this to work so maybe this can be helpful to someone.
+Try it out in Monster Hunter lobby :)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Welcome"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
